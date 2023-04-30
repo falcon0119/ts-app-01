@@ -11,9 +11,6 @@ function App() {
   return (
     <ChakraProvider theme={theme}>
       <BrowserRouter>
-        {/* <Routes>
-          <Route path="/" element={<LoginConst />} />
-        </Routes> */}
         <RouterConst />
       </BrowserRouter>
     </ChakraProvider>
