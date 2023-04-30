@@ -1,3 +1,4 @@
+import { ErrorConst } from "../components/pages/404";
 import { HomeConst } from "../components/pages/Home";
 import { SettingConst } from "../components/pages/Setting";
 import { UserManagementConst } from "../components/pages/UserManagement";
@@ -14,5 +15,9 @@ export const HomeRouterConst = [
   {
     path: "/setting",
     element: <SettingConst />,
+  },
+  {
+    path: "/*",
+    element: <ErrorConst />,
   },
 ];
