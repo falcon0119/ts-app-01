@@ -4,14 +4,14 @@ import { BrowserRouter, Routes } from "react-router-dom";
 import "./App.css";
 import theme from "./theme/theme";
 import { Navigate, Route } from "react-router-dom";
-import { LoginConst } from "./components/pages/Login";
+import { RouterConst } from "./router/Router";
 
 function App() {
   return (
     <ChakraProvider theme={theme}>
       <BrowserRouter>
         <Routes>
-          <Route path="/" element={<LoginConst />} />
+          <RouterConst />
         </Routes>
       </BrowserRouter>
     </ChakraProvider>
