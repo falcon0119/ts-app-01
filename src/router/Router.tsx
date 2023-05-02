@@ -1,5 +1,5 @@
 import { FC, memo, ReactNode } from "react";
-import { Navigate, Route, Routes } from "react-router-dom";
+import { Route, Routes, useNavigate } from "react-router-dom";
 import { LoginConst } from "../components/pages/Login";
 import { HomeConst } from "../components/pages/Home";
 import { ErrorConst } from "../components/pages/404";
