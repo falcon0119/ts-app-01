@@ -5,7 +5,7 @@ import { FC, memo } from "react";
 type Props = {
   children: ReactNode;
   onClick: () => void;
-  disabled?: boolean;
+  disabled?: boolea;
   loading?: boolean;
 };
 
