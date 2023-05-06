@@ -2,9 +2,11 @@ import axios from "axios";
 import { useCallback, useState } from "react";
 import { user } from "../../api/user";
 import { useNavigate } from "react-router-dom";
+import { useShowMessageConst } from "./useShowMessage";
 
 export const UserAuthConst = () => {
   const navigate = useNavigate();
+  const { showMessageConst } = useShowMessageConst();
   const [loading, setloading] = useState(false);
   const login = useCallback(
     (id: string) => {
@@ -13,16 +15,27 @@ export const UserAuthConst = () => {
         .get<user>(`https://jsonplaceholder.typicode.com/users/${id}`)
         .then((res) => {
           if (res.data) {
-            console.log("Navigating to /home");
+            showMessageConst({
+              title: "ログインに成功しました",
+              status: "success",
+            });
             navigate("/home");
           } else {
-            alert("ユーザーが見つかりません");
+            showMessageConst({
+              title: "ユーザーが見つかりません",
+              status: "warning",
+            });
           }
         })
-        .catch(() => alert("ログインできません"))
+        .catch(() => {
+          showMessageConst({
+            title: "ログインできません",
+            status: "error",
+          });
+        })
         .finally(() => setloading(false));
     },
-    [navigate]
+    [navigate, showMessageConst]
   );
   return { loading, login };
 };
