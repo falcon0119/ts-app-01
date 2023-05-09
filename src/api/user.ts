@@ -1,16 +1,16 @@
-export type user = {
+export type User = {
   id: number;
-  name: "Leanne Graham";
-  username: "Bret";
-  email: "Sincere@april.biz";
+  name: string;
+  username: string;
+  email: string;
   address: {
-    street: "Kulas Light";
-    suite: "Apt. 556";
-    city: "Gwenborough";
-    zipcode: "92998-3874";
+    street: string;
+    suite: string;
+    city: string;
+    zipcode: string;
     geo: {
-      lat: "-37.3159";
-      lng: "81.1496";
+      lat: string;
+      lng: string;
     };
   };
 };

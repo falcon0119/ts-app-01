@@ -1,6 +1,6 @@
 import axios from "axios";
 import { useCallback, useState } from "react";
-import { user } from "../../api/user";
+import { User } from "../../api/user";
 import { useNavigate } from "react-router-dom";
 import { useShowMessageConst } from "./useShowMessage";
 
@@ -12,7 +12,7 @@ export const UserAuthConst = () => {
     (id: string) => {
       setloading(true);
       axios
-        .get<user>(`https://jsonplaceholder.typicode.com/users/${id}`)
+        .get<User>(`https://jsonplaceholder.typicode.com/users/${id}`)
         .then((res) => {
           if (res.data) {
             showMessageConst({

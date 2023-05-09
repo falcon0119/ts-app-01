@@ -1,19 +1,16 @@
 import { useCallback, useState } from "react";
-import { user } from "../../api/user";
+import { User } from "../../api/user";
 import axios from "axios";
 import { useShowMessageConst } from "./useShowMessage";
-
-type Props = {};
 
 export const useAllusesdConst = () => {
   const { showMessageConst } = useShowMessageConst();
   const [loading, setloading] = useState(false);
-  const [users, setusers] = useState<Array<user>>();
-  const getUsers = useCallback((props: Props) => {
-    // const {} = props;
+  const [users, setusers] = useState<Array<User>>([]);
+  const getUsers = useCallback(() => {
     setloading(true);
     axios
-      .get<Array<user>>("https://jsonplaceholder.typicode.com/users")
+      .get<Array<User>>("https://jsonplaceholder.typicode.com/users")
       .then((res) => setusers(res.data))
       .catch(() => {
         showMessageConst({
@@ -26,7 +23,5 @@ export const useAllusesdConst = () => {
         setloading(false);
       });
   }, []);
-  return { getUsers };
+  return { getUsers, loading, users };
 };
-
-// .get<Array<user>>("https://jsonplaceholder.typicode.com/users")
