@@ -42,13 +42,17 @@ export const UserCardMordalConst: FC<Props> = memo((props) => {
           <ModalCloseButton />
           <ModalBody pb={6}>
             <FormControl>
-              <FormLabel>{user?.username}</FormLabel>
-              <Input ref={initialRef} placeholder="First name" />
+              <FormLabel>username</FormLabel>
+              <Input
+                ref={initialRef}
+                placeholder="username"
+                defaultValue={user?.username}
+              />
             </FormControl>
 
             <FormControl mt={4}>
-              <FormLabel>Last name</FormLabel>
-              <Input placeholder="Last name" />
+              <FormLabel>name</FormLabel>
+              <Input placeholder="name" defaultValue={user?.name} />
             </FormControl>
           </ModalBody>
 
