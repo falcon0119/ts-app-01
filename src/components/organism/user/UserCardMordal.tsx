@@ -20,10 +20,11 @@ type Props = {
   user: User | null;
   isOpen: boolean;
   onClose: () => void;
+  isAdmin?: boolean;
 };
 
 export const UserCardMordalConst: FC<Props> = memo((props) => {
-  const { isOpen, onClose, user } = props;
+  const { isOpen, onClose, user, isAdmin } = props;
   //   const { selectedUsers, getSelectedUsers } = useSelectedUsers;
   const initialRef = React.useRef(null);
   const finalRef = React.useRef(null);
@@ -37,6 +38,7 @@ export const UserCardMordalConst: FC<Props> = memo((props) => {
         onClose={onClose}
       >
         <ModalOverlay />
+        console.log(isAdmin)
         <ModalContent>
           <ModalHeader>Create your account</ModalHeader>
           <ModalCloseButton />
@@ -49,19 +51,20 @@ export const UserCardMordalConst: FC<Props> = memo((props) => {
                 defaultValue={user?.username}
               />
             </FormControl>
-
             <FormControl mt={4}>
               <FormLabel>name</FormLabel>
               <Input placeholder="name" defaultValue={user?.name} />
             </FormControl>
           </ModalBody>
 
-          <ModalFooter>
-            <Button colorScheme="blue" mr={3}>
-              Save
-            </Button>
-            <Button onClick={onClose}>Cancel</Button>
-          </ModalFooter>
+          {isAdmin && (
+            <ModalFooter>
+              <Button colorScheme="blue" mr={3}>
+                Save
+              </Button>
+              <Button onClick={onClose}>Cancel</Button>
+            </ModalFooter>
+          )}
         </ModalContent>
       </Modal>
     </>

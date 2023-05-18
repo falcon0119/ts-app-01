@@ -17,7 +17,9 @@ export const UserAuthConst = () => {
         .get<User>(`https://jsonplaceholder.typicode.com/users/${id}`)
         .then((res) => {
           if (res.data) {
-            setloginUser(res.data);
+            const isAdmin = res.data.id === 10 ? true : false;
+            setloginUser({ ...res.data, isAdmin });
+
             showMessageConst({
               title: "ログインに成功しました",
               status: "success",

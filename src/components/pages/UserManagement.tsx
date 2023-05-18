@@ -26,11 +26,15 @@ import { UserCardConst } from "../organism/user/UserCard";
 import { useAllusesdConst } from "../hooks/useAllusers";
 import { UserCardMordalConst } from "../organism/user/UserCardMordal";
 import { useSelectedUsers } from "../hooks/useselectedUsers";
+import { useLoginuser } from "../hooks/useLoginUser";
+import { UserAuthConst } from "../hooks/userAuth";
 
 export const UserManagementConst: FC = memo(() => {
   const { isOpen, onOpen, onClose } = useDisclosure();
   const { getUsers, loading, users } = useAllusesdConst();
   const { getSelectedUsers, selectedUser } = useSelectedUsers();
+  const { loginUser } = useLoginuser();
+  console.log(loginUser);
   const onClickUser = useCallback(
     (id: number) => {
       // alert(id);
@@ -65,6 +69,7 @@ export const UserManagementConst: FC = memo(() => {
         user={selectedUser}
         isOpen={isOpen}
         onClose={onClose}
+        isAdmin={loginUser ? loginUser.isAdmin : false}
       />
     </>
   );

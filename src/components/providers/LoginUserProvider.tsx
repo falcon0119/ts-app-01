@@ -8,9 +8,11 @@ import {
 } from "react";
 import { User } from "../../api/user";
 
+type LoginUser = User & { isAdmin: boolean };
+
 export type LoginUserContextType = {
-  loginUser: User | null;
-  setloginUser: Dispatch<SetStateAction<User | null>>;
+  loginUser: LoginUser | null;
+  setloginUser: Dispatch<SetStateAction<LoginUser | null>>;
 };
 
 export const LoginUserContext = createContext<LoginUserContextType>(
@@ -19,7 +21,7 @@ export const LoginUserContext = createContext<LoginUserContextType>(
 
 export const LoginUserProvider = (props: { children: ReactNode }) => {
   const { children } = props;
-  const [loginUser, setloginUser] = useState<User | null>(null);
+  const [loginUser, setloginUser] = useState<LoginUser | null>(null);
   return (
     <LoginUserContext.Provider value={{ loginUser, setloginUser }}>
       {children}
